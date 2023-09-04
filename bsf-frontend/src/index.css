@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer components {
+  .h1 {
+    @apply md:text-5.5xl text-3xl leading-[2.75rem] tracking-[-5%] font-semibold
+  }
+
+  .h2 {
+    @apply text-5xl leading-[2.185rem] tracking-[-3%] font-semibold
+  }
+
+  .h3 {
+    @apply text-4.5xl leading-[1.875rem] tracking-[-3%] font-semibold
+  }
+
+  .h4 {
+    @apply text-3.5xl leading-[1.875rem] tracking-[-3%] font-semibold
+  }
+
+  .h5 {
+    @apply text-2xl leading-[1.875rem] tracking-[-0%] font-semibold
+  }
+
+  .h6 {
+    @apply text-xl leading-[1.875rem] tracking-[-0%] font-semibold
+  }
+
+  .large {
+    @apply text-xl
+  }
+
+
+  .medium {
+    @apply text-lg leading-[1.575rem]
+  }
+
+  .normal {
+    @apply text-base leading-[1.575rem]
+  }
+
+
+  .small {
+    @apply text-sm
+  }
+
+  .extra-small {
+    @apply text-xs
+  }
+
+  .tiny {
+    @apply font-[0.625rem] leading-[0.75rem]
+  }
+}
+
+html {
+  @apply font-primary
+}
+
+.center {
+  @apply flex items-center justify-center
+}
+
+.grey-border {
+  @apply border border-grey-100
+}
+
+.indicators {
+  @apply flex space-x-4
+}
+
+.customized-react-select__control {
+  @apply rounded-lg bg-white border border-grey-100 px-4 py-4 flex-nowrap !important
+}
+
+.customized-react-select__control--is-focused {
+  @apply border-none shadow-select !important
+}
+
+
+.customized-react-select__menu {
+  @apply rounded-lg bg-white shadow-bills top-1 !important
+}
+
+.customized-react-select__option {
+
+  @apply p-4 text-base text-grey-400 font-normal !important
+}
+
+.customized-react-select__option--is-focused {
+  @apply bg-white !important
+}
+
+.customized-react-select__option--is-selected {
+  @apply bg-white !important
+}
+
+.customized-react-select__option:not(:last-of-type) {
+  @apply shadow-option !important
+}
+
+.customized-react-select__option--is-focused {
+
+  @apply bg-white !important
+}
+
+.customized-react-select__indicator-separator,
+.customized-react-select__dropdown-indicator {
+  @apply hidden !important
+}
+
+
+a:active,
+button:active {
+  outline: none;
+  background-color: transparent;
+}
+
+a:focus,
+button:focus {
+  outline: none;
+  background-color: transparent;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
