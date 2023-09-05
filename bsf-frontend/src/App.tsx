@@ -29,7 +29,7 @@ function App() {
 
   useEffect(() => {
     refetch();
-  }, [searchQuery]);
+  }, [searchQuery, filter, dragonNumber]);
 
   const capsules = useMemo<CapsuleUI[]>(() => {
     if (data) {
@@ -81,24 +81,32 @@ function App() {
   // };
 
   const handlePageChange = (num: number) => {
-    setSearchQuery({
-      ...searchQuery,
-      options: {
-        ...searchQuery.options,
-        page: num,
-      },
-    });
+    if (num) {
+      setSearchQuery({
+        ...searchQuery,
+        options: {
+          ...searchQuery.options,
+          page: num,
+        },
+      });
+    }
   };
 
   const handleDragonNumber = (e: ChangeEvent<InputElement>) => {
     setDragonNumber(e.target.value);
-    setSearchQuery({
-      ...searchQuery,
-      query: {
-        ...searchQuery.query,
-        reuse_count: e.target.value,
-      },
-    });
+    if (e.target.value) {
+      setSearchQuery({
+        ...searchQuery,
+        query: {
+          ...searchQuery.query,
+          reuse_count: e.target.value,
+        },
+      });
+    } else {
+      const newQuery = searchQuery;
+      delete newQuery.query['reuse_count'];
+      setSearchQuery(newQuery);
+    }
   };
 
   const handleSelectCapsule = (id: string) => {
@@ -118,14 +126,18 @@ function App() {
               options={status}
               label="Filter by Status"
               value={filter.status}
-              onChange={(selectedData: any) => handleStatusFilter(status, 'status', selectedData.value)}
+              onChange={(selectedData: any) =>
+                handleStatusFilter(status, 'status', selectedData.value)
+              }
             />
           </div>
           <div>
             <Select
               options={dragon}
               label="Filter by Dragon type"
-              onChange={(typeData: any) => handleStatusFilter(dragon, 'type', typeData.value)}
+              onChange={(typeData: any) =>
+                handleStatusFilter(dragon, 'type', typeData.value)
+              }
               value={filter.type}
             />
           </div>
@@ -133,6 +145,7 @@ function App() {
             value={dragonNumber}
             onChange={handleDragonNumber}
             type="number"
+            min={1}
           />
         </div>
         {!isLoading && data?.docs.length! > 0 && (
